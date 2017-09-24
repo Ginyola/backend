@@ -2,10 +2,11 @@
 header('Content-Type: text/plain; charset=UTF-8');
 
 if (isset($_GET['numbers']) && ! empty($_GET['numbers'])) {
+    
     $inputString = $_GET['numbers'];
     $inputArray = explode(",", $inputString);
-    $numericFlag = true;
 
+    $numericFlag = true;
     foreach ($inputArray as $key) {
         if (! is_numeric($key)) { 
             $numericFlag = false;
@@ -13,7 +14,7 @@ if (isset($_GET['numbers']) && ! empty($_GET['numbers'])) {
             break;        
         }
     }   
-    
+
     if ($numericFlag) {
         $sorted = false;
         while (! $sorted) {
@@ -28,12 +29,10 @@ if (isset($_GET['numbers']) && ! empty($_GET['numbers'])) {
             } 
         }
     }
-    foreach ($inputArray as $element) {
-        print_r($element);
-        if (! ($element == end($inputArray))) {
-            print(",");
-        }
-    }
+    
+    $outputString = implode(",", $inputArray);
+    print_r($outputString);
+ 
 } else {
     header("Status: 400 Incorrect parametrs");
 }                            //ToDo count_chars()?;
