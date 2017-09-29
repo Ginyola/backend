@@ -1,0 +1,9 @@
+<?php
+header('Content-Type: text/plain; charset=UTF-8');
+if (count($argv) < 3 && count($argv) != 1) {
+    $inputString = $argv[1];
+    $approvalSr3Flag = preg_match('/^[a-zA-z]{1}[a-zA-Z0-9]{0,}$/', $inputString) ? 1 : 0 ; 
+    echo $approvalSr3Flag == 0 ?  "No" : "Yes";
+} else {
+    echo "Error";
+}
